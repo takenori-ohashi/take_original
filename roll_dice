@@ -1,0 +1,48 @@
+# 回転後のサイコロの状態を調べる関数
+def roll_dice(before_top, before_front, before_right, direction):
+
+    # サイコロが回転する方向が「上」だった場合に、回転した後の状態を設定する
+    if (direction == "up"):
+        after_top = before_front
+        after_front = (7 - before_top)
+        after_right = before_right
+
+    # サイコロが回転する方向が「下」だった場合に、回転した後の状態を設定する
+    elif (direction == "down"):
+        after_top = (7 - before_front)
+        after_front = before_top
+        after_right = before_right
+
+    # サイコロが回転する方向が「左」だった場合に、回転した後の状態を設定する
+    elif (direction == "left"):
+        after_top = before_right
+        after_front = before_front
+        after_right = (7 - before_top)
+
+    # サイコロが回転する方向が「左」だった場合に、回転した後の状態を設定する
+    elif (direction == "right"):
+        after_top = (7 - before_right)
+        after_front = before_front
+        after_right = before_top
+
+
+    # サイコロが回転した後の状態を戻り値として返す
+    return(after_top, after_front, after_right)
+
+
+
+# サイコロが回転する前の状態（上、正面、右から見た面の数字）
+before_top = 1
+before_front = 2
+before_right = 3
+
+# サイコロが回転する方向
+direction = "up"
+
+# 回転後のサイコロの状態を調べる関数を呼び出す
+after_top, after_front, after_right = roll_dice(before_top, before_front, before_right, direction)
+
+# 結果出力
+print("回転後のサイコロを上から見た面の数字 ->", after_top)
+print("回転後のサイコロを前から見た面の数字 ->", after_front)
+print("回転後のサイコロを右から見た面の数字 ->", after_right)

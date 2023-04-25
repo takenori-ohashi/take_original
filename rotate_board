@@ -1,0 +1,53 @@
+import pprint
+
+# 盤面を回転させる関数
+def rotate_board(N, M, input_list, output_list):
+
+    # 時計回りに90度回転した場合
+    if M == 1:
+        for Y in range(N):
+            for X in range(N):
+                output_list[Y][N -X -1] = input_list[X][Y]
+
+    # 時計回りに180度回転した場合
+    elif M == 2:
+        for Y in range(N):
+            for X in range(N):
+                output_list[N-X -1][N -Y -1] = input_list[X][Y]
+
+    # 時計回りに270度回転した場合
+    elif M == 3:
+        for Y in range(N):
+            for X in range(N):
+              output_list[N -Y -1][X] = input_list[X][Y]
+
+    # 処理結果を返す
+    return(output_list)
+
+
+
+# 盤面の大きさ（N × N マス）
+N = 4
+
+# 元の盤面
+example_list = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+
+# 結果保存用 list (N × N マスの "." 詰めで準備)
+result_list = [["." for i in range(N)] for j in range(N)]
+
+# 回転数（1回で時計回りに90度回転）
+M = 2
+# 盤面を回転させる関数を呼び出し
+result_list = rotate_board(N, M, example_list, result_list)
+# 時計回りに180度回転させた結果出力
+print("時計回りに180度回転させた結果")
+pprint.pprint(result_list, width = 20)
+print("")
+
+# 回転数（1回で時計回りに90度回転）
+M = 3
+# 盤面を回転させる関数を呼び出し
+result_list = rotate_board(N, M, example_list, result_list)
+# 結果出力
+print("時計回りに270度回転させた結果")
+pprint.pprint(result_list, width = 20)
